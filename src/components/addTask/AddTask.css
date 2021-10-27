@@ -1,0 +1,17 @@
+.add-task {
+  width: 500px;
+}
+
+.add-task button {
+  color: #fff;
+  background-color: #2f79b9;
+}
+
+.add-task button:hover {
+  background-color: #4a96da;
+  color: #fff;
+}
+
+.add-task input {
+  box-shadow: #86b7fe;
+}
