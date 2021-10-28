@@ -9,15 +9,14 @@ function App() {
   const [tasks, setTasks] = useState<any[]>([]);
   const tasksCollRef = collection(db, "tasks");
 
-  const getTasks = async () => {
-    const data = await getDocs(tasksCollRef);
-    const tasks = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    setTasks(tasks);
-  };
-
   useEffect(() => {
+    const getTasks = async () => {
+      const data = await getDocs(tasksCollRef);
+      const tasks = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setTasks(tasks);
+    };
     getTasks();
-  }, []);
+  }, [tasksCollRef]);
 
   console.log(tasks);
 
