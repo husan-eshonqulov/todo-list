@@ -5,9 +5,11 @@ import Tasks from "../tasks/Tasks";
 import { db } from "../../database/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 
+export type TaskType = any;
+
 function App() {
   // what is the task type?
-  const [tasks, setTasks] = useState<any[]>([]);
+  const [tasks, setTasks] = useState<TaskType[]>([]);
   const tasksCollRef = collection(db, "tasks");
 
   useEffect(() => {

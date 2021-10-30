@@ -35,6 +35,10 @@
   background-color: #ac1f2d !important;
 }
 
+.undo-btn:hover {
+  background-color: #3aaed1 !important;
+}
+
 .check-btn:focus,
 .cross-btn:focus,
 .undo-btn:focus {
