@@ -1,3 +1,4 @@
+import "./App.css";
 import { useEffect, useState } from "react";
 import AddTask from "../addTask/AddTask";
 import Tasks from "../tasks/Tasks";
@@ -16,13 +17,22 @@ function App() {
       setTasks(tasks);
     };
     getTasks();
-  }, [tasksCollRef]);
+  }, []);
 
   console.log(tasks);
 
   return (
-    <div>
-      <AddTask />
+    <div className="container mb-5">
+      <h1 className="text-center mt-4" style={{ color: "#777" }}>
+        ToDo
+      </h1>
+      <div className="px-4 py-4 mt-3 input-div">
+        <AddTask />
+      </div>
+      <h2 className="mt-5 mb-3" style={{ color: "#333" }}>
+        Tasks
+      </h2>
+      <hr />
       <Tasks tasks={tasks} />
     </div>
   );

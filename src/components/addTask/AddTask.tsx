@@ -12,7 +12,7 @@ function AddTask() {
   };
 
   return (
-    <div className="add-task m-auto mt-5">
+    <div className="add-task m-auto">
       <input
         type="text"
         placeholder="Task"
