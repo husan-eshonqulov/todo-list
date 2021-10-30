@@ -2,13 +2,11 @@
   display: inline-block;
   font-weight: 500;
   font-size: 1.3em;
-  /* color: #3a773a; */
 }
 
 .check-btn {
   border-top-right-radius: 0% !important;
   border-bottom-right-radius: 0% !important;
-  background-color: #5fb957 !important;
   border: none !important;
   padding: 10px 12px !important;
 }
@@ -27,4 +25,9 @@
 
 .cross-btn:hover {
   background-color: #ac1f2d !important;
+}
+
+.check-btn:focus,
+.cross-btn:focus {
+  box-shadow: none !important;
 }

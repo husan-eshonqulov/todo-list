@@ -47,7 +47,7 @@ function Tasks({ tasks }: { tasks: any }) {
           }
 
           return (
-            <div key={task.id} style={{ ...taskStyle }}>
+            <div key={task.id} style={taskStyle}>
               <Task
                 taskId={task.id}
                 status={task.completed}

@@ -1,5 +1,5 @@
 import "./Task.css";
-import { ImCheckmark, ImCross } from "react-icons/im";
+import { ImCheckmark, ImCross, ImUndo2 } from "react-icons/im";
 import { db } from "../../database/firebase-config";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 
@@ -22,15 +22,27 @@ function Task({
     await updateDoc(taskDoc, { completed: !status });
   };
 
+  const checkBtn = status ? (
+    <ImUndo2 className="d-flex" />
+  ) : (
+    <ImCheckmark className="d-flex" />
+  );
+
+  const checkBtnBg = status ? "#56c0e0" : "#5fb957";
+  const isStrike = status ? "line-through" : "";
+
   return (
     <div className="task px-4 py-3 d-flex justify-content-between align-items-center">
-      <div className="task-context">{context}</div>
+      <div className="task-context" style={{ textDecoration: isStrike }}>
+        {context}
+      </div>
       <div>
         <button
           className="btn btn-success check-btn"
           onClick={() => changeStatus(taskId, status)}
+          style={{ backgroundColor: checkBtnBg }}
         >
-          <ImCheckmark className="d-flex" />
+          {checkBtn}
         </button>
         <button
           className="btn btn-danger cross-btn"
