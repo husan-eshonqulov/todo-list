@@ -17,7 +17,7 @@ function App() {
       setTasks(tasks);
     };
     getTasks();
-  }, [tasksCollRef]);
+  }, []);
 
   console.log(tasks);
 

@@ -22,13 +22,28 @@ function Task({
     await updateDoc(taskDoc, { completed: !status });
   };
 
-  const checkBtn = status ? (
-    <ImUndo2 className="d-flex" />
-  ) : (
-    <ImCheckmark className="d-flex" />
-  );
+  let checkBtn;
 
-  const checkBtnBg = status ? "#56c0e0" : "#5fb957";
+  if (status) {
+    checkBtn = (
+      <button
+        className="btn btn-success undo-btn"
+        onClick={() => changeStatus(taskId, status)}
+      >
+        <ImUndo2 className="d-felx" />
+      </button>
+    );
+  } else {
+    checkBtn = (
+      <button
+        className="btn btn-success check-btn"
+        onClick={() => changeStatus(taskId, status)}
+      >
+        <ImCheckmark className="d-flex" />
+      </button>
+    );
+  }
+
   const isStrike = status ? "line-through" : "";
 
   return (
@@ -37,13 +52,7 @@ function Task({
         {context}
       </div>
       <div>
-        <button
-          className="btn btn-success check-btn"
-          onClick={() => changeStatus(taskId, status)}
-          style={{ backgroundColor: checkBtnBg }}
-        >
-          {checkBtn}
-        </button>
+        {checkBtn}
         <button
           className="btn btn-danger cross-btn"
           onClick={() => deleteTask(taskId)}

@@ -7,12 +7,16 @@
 .check-btn {
   border-top-right-radius: 0% !important;
   border-bottom-right-radius: 0% !important;
+  background-color: #5fb957 !important;
   border: none !important;
   padding: 10px 12px !important;
 }
 
-.check-btn:hover {
-  background-color: #269963 !important;
+.undo-btn {
+  border-top-right-radius: 0% !important;
+  border-bottom-right-radius: 0% !important;
+  background-color: #56c0e0 !important;
+  border: none !important;
 }
 
 .cross-btn {
@@ -23,11 +27,16 @@
   padding: 10px 12px !important;
 }
 
+.check-btn:hover {
+  background-color: #269963 !important;
+}
+
 .cross-btn:hover {
   background-color: #ac1f2d !important;
 }
 
 .check-btn:focus,
-.cross-btn:focus {
+.cross-btn:focus,
+.undo-btn:focus {
   box-shadow: none !important;
 }
