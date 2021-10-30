@@ -1,14 +1,14 @@
 import "./AddTask.css";
 import { useState } from "react";
 import { db } from "../../database/firebase-config";
-import { collection, addDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
-function AddTask() {
+function AddTask({ dataLen }: { dataLen: number }) {
   const [task, setTask] = useState("");
-  const tasksCollectionRef = collection(db, "tasks");
 
   const addTask = async () => {
-    await addDoc(tasksCollectionRef, { task: task, completed: false });
+    const taskDoc = doc(db, "tasks", `${dataLen}`);
+    await setDoc(taskDoc, { task: task, completed: false });
   };
 
   return (

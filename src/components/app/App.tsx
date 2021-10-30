@@ -17,7 +17,7 @@ function App() {
       setTasks(tasks);
     };
     getTasks();
-  }, []);
+  }, [tasksCollRef]);
 
   console.log(tasks);
 
@@ -27,7 +27,7 @@ function App() {
         ToDo
       </h1>
       <div className="px-4 py-4 mt-3 input-div">
-        <AddTask />
+        <AddTask dataLen={tasks.length} />
       </div>
       <h2 className="mt-5 mb-3" style={{ color: "#333" }}>
         Tasks
