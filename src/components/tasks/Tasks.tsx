@@ -11,7 +11,7 @@ function Tasks({ tasks }: { tasks: TaskType[] }) {
     if (a.completed === true && b.completed === false) return 1;
     return 0;
   });
-  console.log(tasks);
+
   return (
     <div className="tasks-div">
       {tasks.map((task: TaskType, index: number) => {

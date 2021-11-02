@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddTask from "../addTask/AddTask";
 import Tasks from "../tasks/Tasks";
 import { db } from "../../database/firebase-config";
@@ -12,16 +12,16 @@ function App() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const tasksCollRef = collection(db, "tasks");
 
-  useEffect(() => {
-    const getTasks = async () => {
-      const data = await getDocs(tasksCollRef);
-      const tasks = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-      setTasks(tasks);
-    };
-    getTasks();
-  }, [tasksCollRef]);
+  const updateTasks = (tasks: TaskType[]) => {
+    setTasks(tasks);
+  };
 
-  console.log(tasks);
+  const getTasks = async () => {
+    const data = await getDocs(tasksCollRef);
+    const tasks = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    setTasks(tasks);
+  };
+  getTasks();
 
   return (
     <div className="container mb-5">
@@ -29,7 +29,7 @@ function App() {
         ToDo
       </h1>
       <div className="px-4 py-4 mt-3 input-div">
-        <AddTask dataLen={tasks.length} />
+        <AddTask updateTasks={updateTasks} />
       </div>
       <h2 className="mt-5 mb-3" style={{ color: "#333" }}>
         Tasks
