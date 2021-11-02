@@ -1,6 +1,8 @@
 .add-task button {
   color: #fff;
   background-color: #2f79b9;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
 }
 
 .add-task button:hover {
@@ -10,4 +12,6 @@
 
 .add-task input {
   box-shadow: #86b7fe;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
 }
