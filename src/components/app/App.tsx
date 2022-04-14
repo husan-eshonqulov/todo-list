@@ -1,9 +1,9 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTask from "../addTask/AddTask";
 import Tasks from "../tasks/Tasks";
 import { db } from "../../database/firebase-config";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 
 export type TaskType = any;
 
@@ -12,16 +12,19 @@ function App() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const tasksCollRef = collection(db, "tasks");
 
+  console.log("App");
+
+  useEffect(() => {
+    const unsub = onSnapshot(tasksCollRef, (data) => {
+      setTasks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    return unsub;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const updateTasks = (tasks: TaskType[]) => {
     setTasks(tasks);
   };
-
-  const getTasks = async () => {
-    const data = await getDocs(tasksCollRef);
-    const tasks = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    setTasks(tasks);
-  };
-  getTasks();
 
   return (
     <div className="container mb-5">
